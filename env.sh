@@ -6,7 +6,7 @@ else
     chain=$1
 fi
 echo $chain
-json=$(curl https://changelog.makerdao.com/releases/${chain}/active/contracts.json 2> /dev/null)
+json=$(curl https://changelog.makerdao.com/releases/${chain}/active/contracts.json -L 2> /dev/null)
 if [[ $json == {* ]]
    then
        lines=$(echo $json | sed 's/{ "/export~/' | sed 's/": "/=/g' | sed 's/", "/ export~/g' | sed 's/" }//')
